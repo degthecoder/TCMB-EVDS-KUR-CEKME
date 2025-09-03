@@ -17,14 +17,14 @@ Bu proje, **TCMB EVDS API** üzerinden günlük **USD, EUR ve GBP** döviz kurla
 # Veritabanı Şeması (Önerilen)
 
 Eğer tablon yoksa şu şemayla oluşturabilirsin. TARIH üzerinde PRIMARY KEY olduğundan tekrar kayıt engellenir.
-
+```
 CREATE TABLE dbo.AL_Doviz (
     TARIH     date        NOT NULL PRIMARY KEY,
     USD       decimal(18,4) NULL,
     EURO      decimal(18,4) NULL,
     STERLIN   decimal(18,4) NULL,
 );
-
+```
 # Kurulum
 
 Önce gitten bu projeyi klonlayın.
