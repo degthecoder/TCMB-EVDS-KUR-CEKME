@@ -1,10 +1,10 @@
 # 📊 TCMB EVDS Kur Çekme Aracı
 
-Bu proje, **TCMB EVDS API** üzerinden günlük **USD, EUR ve GBP** döviz kurlarını çekip SQL Server veritabanındaki `AL_Doviz` tablosuna kaydeder.
+Bu proje, **TCMB EVDS API** üzerinden günlük **USD, EUR ve GBP** döviz kurlarını çekip SQL Server veritabanındaki `Doviz` tablosuna kaydeder.
 
 - Son **4 günün verisini** çeker  
 - Hafta sonu / tatil günleri için önceki değeri otomatik olarak doldurur (forward-fill)  
-- `AL_Doviz` tablosuna yalnızca **daha önce eklenmemiş** satırları ekler  
+- `Doviz` tablosuna yalnızca **daha önce eklenmemiş** satırları ekler  
 
 ---
 
@@ -18,7 +18,7 @@ Bu proje, **TCMB EVDS API** üzerinden günlük **USD, EUR ve GBP** döviz kurla
 
 Eğer tablon yoksa şu şemayla oluşturabilirsin. TARIH üzerinde PRIMARY KEY olduğundan tekrar kayıt engellenir.
 ```
-CREATE TABLE dbo.AL_Doviz (
+CREATE TABLE dbo.Doviz (
     TARIH     date        NOT NULL PRIMARY KEY,
     USD       decimal(18,4) NULL,
     EURO      decimal(18,4) NULL,
@@ -93,6 +93,6 @@ TP.DK.GBP.S.YTL → GBP satış
 
 Hafta sonu / tatil günlerinde veri bulunmazsa son geçerli değerle doldurulur.
 
-AL_Doviz.TARIH üzerinde PRIMARY KEY bulunduğu için tekrar eden satırlar eklenmez.
+Doviz.TARIH üzerinde PRIMARY KEY bulunduğu için tekrar eden satırlar eklenmez.
 
 Eğer MSSQL kullanmıyorsanız, sorguyu (INSERT, MERGE vb.) ve SQLAlchemy bağlantı ayarlarını değiştirerek kendi kullandığınız veritabanına (PostgreSQL, MySQL/MariaDB, SQLite vb.) bağlanabilirsiniz.
